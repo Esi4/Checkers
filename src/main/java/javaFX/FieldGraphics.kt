@@ -1,6 +1,5 @@
 package javaFX
 
-
 import javafx.scene.image.ImageView
 import core.*
 import javafx.scene.image.Image
