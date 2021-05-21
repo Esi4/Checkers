@@ -1,7 +1,7 @@
 package core
 
 open class Board {
-    private val field = List(8) { MutableList<Checker?>(8) {null} }
+    private val field = MutableList(8) { MutableList<Checker?>(8) {null} }
 
 
     operator fun set(x: Int, y:Int, checker: Checker?) {
