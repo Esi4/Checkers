@@ -16,12 +16,12 @@ open class Checker(val color: Color) {
         val enemy = mutableListOf<Pair<Int, Int>>()
         val freeCell = mutableListOf<Pair<Int, Int>>()
         val direction = listOf(-1 to 1, -1 to -1, 1 to 1, 1 to -1)
-        val board = this.getBoard()!!
+        val board = this.getBoard()
 
         for ((dirX, dirY) in direction) {
             if (x + 2 * dirX in 0..7 && y + 2 * dirY in 0..7) {
-                if (isChecker(x + dirX, y + dirY) && board[x + (2 * dirX), y + (2 * dirY)] == null
-                    && this.color != board[x + dirX, y + dirY]?.color) {
+                if (isChecker(x + dirX, y + dirY) && board?.get(x + (2 * dirX), y + (2 * dirY)) == null
+                    && this.color != board?.get(x + dirX, y + dirY)?.color) {
                         search = true
                     freeCell.add(x + 2 * dirX to y + 2 * dirY)
                     enemy.add(x + dirX to y + dirY)
