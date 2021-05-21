@@ -1,4 +1,4 @@
-package javaFX
+package tornadoFX
 
 import javafx.scene.layout.BorderPane
 import javafx.scene.paint.Color
@@ -7,7 +7,6 @@ import core.*
 import controller.*
 import javafx.beans.property.SimpleBooleanProperty
 import javafx.event.EventHandler
-import javafx.scene.control.ButtonBar
 import javafx.scene.control.Label
 import javafx.scene.image.ImageView
 import javafx.scene.input.ClipboardContent
@@ -98,7 +97,7 @@ class CheckersView : View() {
                                     onDragDone = EventHandler { event ->
                                         val db = event.dragboard
                                         board.setListImage(row, column, db.image)
-                                        if(event.transferMode == TransferMode.MOVE) {
+                                        if(TransferMode.MOVE == event.transferMode) {
                                             logic.moveOrEat(row, column, pair.first, pair.second)
                                         }
                                         pair = null to null
@@ -121,9 +120,11 @@ class CheckersView : View() {
     }
 
     private fun textTurn() {
+        val enemyColor = logic.getTurn().oppositen()
+
         statusLabel.text = if (!board.loser(logic.getTurn())) {
             "Game in process: ${logic.getTurn()} turn"
-        } else "Game finished: ${logic.getTurn()} lose"
+        } else "Game finished: $enemyColor win"
     }
 
     private fun spawnField() {

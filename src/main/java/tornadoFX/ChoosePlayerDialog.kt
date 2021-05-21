@@ -1,12 +1,9 @@
-package javaFX
+package tornadoFX
 
 import javafx.beans.property.SimpleStringProperty
 import javafx.scene.control.ButtonBar
 import javafx.scene.control.ButtonType
 import javafx.scene.control.Dialog
-import javafx.scene.layout.Priority
-import javafx.scene.paint.Color
-import tornadofx.*
 
 class ChoosePlayerDialog : Dialog<ButtonType>() {
     private val whitePlayer = SimpleStringProperty()

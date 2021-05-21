@@ -1,8 +1,7 @@
 package controller
 
 import core.*
-import javaFX.CheckersView
-import javaFX.FieldGraphics
+import tornadoFX.FieldGraphics
 
 class Logic {
     var turn = Color.WHITE

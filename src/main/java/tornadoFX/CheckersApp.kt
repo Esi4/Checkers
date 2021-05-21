@@ -1,4 +1,4 @@
-package javaFX
+package tornadoFX
 
 import javafx.scene.control.ButtonBar
 import javafx.stage.Stage
