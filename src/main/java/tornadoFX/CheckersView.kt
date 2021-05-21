@@ -18,7 +18,6 @@ class CheckersView : View() {
     override val root = BorderPane()
     private lateinit var board: FieldGraphics
     private var logic = Logic()
-    private var handle = SimpleBooleanProperty(false)
     private val listCells = List(8) { MutableList(8) { Rectangle() } }
     private lateinit var statusLabel: Label
     private val listImage = List(8) { MutableList(8) { ImageView() } }
@@ -147,16 +146,6 @@ class CheckersView : View() {
         clear()
         spawnField()
     }
-
-//    private fun backlight(lever: Boolean,x : Int, y: Int) {
-//        for((row, column) in board.allMove(x, y)) {
-//            if(row in 0..7 && column in 0..7) {
-//                if (lever) {
-//                    listCells[row][column].fill = Color.DARKGRAY
-//                } else listCells[row][column].fill = Color.BLACK
-//            }
-//        }
-//    }
 
     private fun clear() {
         for(x in 0..7) {
