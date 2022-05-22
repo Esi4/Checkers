@@ -1,0 +1,43 @@
+        when (winnble(board)) {
+            logic.getTurn() -> {EvaluatedTurn(emptyList(), 10000 + depth)}
+            logic.getTurn().oppositen() -> EvaluatedTurn(emptyList(), -10000 - depth)
+            else -> {}
+        }
+        if (depth <= 0) return EvaluatedTurn(emptyList(), evaluation(logic.getTurn(), board))
+        var result = EvaluatedTurn(emptyList(), -10000)
+        var possibleChecker = sAttack(color, board)
+        if (possibleChecker.isEmpty()) possibleChecker = allCheckers(board)
+
+        for (x in 0..7) {
+            for (y in 0..7) {
+                val checker = board[x, y]
+                if (checker != null) {
+                    if (checker.color != color) continue
+                    if (!possibleChecker.contains(x to y)) continue
+
+                    var possibleMoves = shouldMove(x, y, board).second
+                    if (possibleMoves.isEmpty()) possibleMoves = emptyList()
+
+                    for (move in possibleMoves) {
+                        val allMoves = mutableListOf(move)
+                        val souldAttack = shouldAttack(x, y, board).first
+                        val newDeask = board
+                        board.fakeMove(color, x, y, move.first, move.second, souldAttack, newDeask)
+                        var newMove = move
+
+                        while (shouldAttack(move.first, move.second, newDeask).first) {
+                            val comboMove = shouldMove(move.first, move.second, newDeask).second[0]
+                            board.fakeMove(color, newMove.first, newMove.second, comboMove.first, comboMove.second, true, newDeask)
+                            newMove = comboMove
+                            allMoves.add(comboMove)
+                        }
+                        val evaluation = -minMax(depth - 1, color.oppositen(), newDeask).evaluation
+                        if (evaluation > result.evaluation) {
+                            allMoves.add(0, x to y)
+                            result = EvaluatedTurn(allMoves, evaluation)
+                        }
+                    }
+                }
+            }
+        }
+        return result

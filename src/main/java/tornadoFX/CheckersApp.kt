@@ -8,9 +8,9 @@ import tornadofx.launch
 
 class CheckersApp : App(CheckersView::class) {
 
-    private var whiteHuman = true
+    var whiteHuman = true
 
-    private var blackHuman = true
+    var blackHuman = true
 
     override fun start(stage: Stage) {
         val dialog = ChoosePlayerDialog()
@@ -23,6 +23,6 @@ class CheckersApp : App(CheckersView::class) {
     }
 }
 
-fun main(args: Array<String>) {
+fun main(args: Array<String>) { //запуск
     launch<CheckersApp>(args)
 }

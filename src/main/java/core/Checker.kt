@@ -22,7 +22,7 @@ open class Checker(val color: Color) {
             if (x + 2 * dirX in 0..7 && y + 2 * dirY in 0..7) {
                 if (isChecker(x + dirX, y + dirY) && board?.get(x + (2 * dirX), y + (2 * dirY)) == null
                     && this.color != board?.get(x + dirX, y + dirY)?.color) {
-                        search = true
+                    search = true
                     freeCell.add(x + 2 * dirX to y + 2 * dirY)
                     enemy.add(x + dirX to y + dirY)
                 }
@@ -56,7 +56,7 @@ open class Checker(val color: Color) {
         return Pair(result, list)
     }
 
-    fun opposite(checker: Checker?) = (checker?.color ?: false) != this.color
+    fun opposite(checker: Checker?) = (checker?.color ?: false) != this.color //возвращает тру если входная шашка - враг
 
     fun isChecker(x: Int, y: Int): Boolean {
         return board?.get(x, y) is Checker

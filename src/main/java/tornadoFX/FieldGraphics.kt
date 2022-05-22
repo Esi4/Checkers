@@ -76,11 +76,11 @@ class FieldGraphics(private val listImage: List<List<ImageView>>): Board() {
    }
 
    private fun checkerToQueen(newX: Int, newY: Int) {
-       if(this[newX, newY]!!.color == Color.BLACK && newX == 7) {
+       if(this[newX, newY]?.color == Color.BLACK && newX == 7) {
            dispawnChecker(newX, newY)
            spawnChecker(true, newX, newY, Queen(Color.BLACK))
        } else {
-           if(this[newX, newY]!!.color == Color.WHITE && newX == 0) {
+           if(this[newX, newY]?.color == Color.WHITE && newX == 0) {
                dispawnChecker(newX, newY)
                spawnChecker(true, newX, newY, Queen(Color.WHITE))
            }

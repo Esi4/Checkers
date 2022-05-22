@@ -1,11 +1,16 @@
 package tests
 
-import org.junit.Test
+import controller.Logic
 import core.*
 import kotlin.test.assertEquals
+import org.junit.Test
+import tornadoFX.CheckersView
+import tornadoFX.FieldGraphics
+import kotlin.test.assertTrue
 
 class CheckersTests {
     var board = Board()
+    var logic = Logic()
 
     @Test
     fun eatItTest() {
