@@ -69,7 +69,7 @@ class ComputerPlayer() {
     }
 
 
-    private fun victory(color: Color, board: Map<Pair<Int, Int>, Checker?>): Boolean {
+    fun victory(color: Color, board: Map<Pair<Int, Int>, Checker?>): Boolean {
         var winner = true
         board.forEach{
             if (it.value?.color == color.oppositen()) {

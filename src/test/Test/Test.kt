@@ -54,4 +54,24 @@ class CheckersTests {
         assertEquals(emptyList(), board[7, 7]?.allMoves(7, 7)?.second)
         assertEquals(listOf(6 to 1, 7 to 2, 4 to 1, 3 to 2, 2 to 3, 1 to 4, 0 to 5), board[5, 0]?.allMoves(5, 0)?.second)
     }
+
+    //тест, если шашка-бот должна есть - она ест
+    @Test
+    fun compTest() {
+        val field = Board()
+        val cmp = ComputerPlayer()
+        var count = 0
+
+        field[1, 2] = Checker(Color.BLACK)
+        field[2, 3] = Checker(Color.WHITE)
+
+        val lists = cmp.wafer(2, Color.WHITE, field.allCheckers(field)).moves
+        while (count < lists.size - 1) {
+            field[lists[count + 1].first, lists[count + 1].second] = field[lists[count].first, lists[count].second]
+            field[lists[count].first, lists[count].second] = null
+            count++
+        }
+        val result = Pair(0, 1)
+        assertTrue(field.allCheckers(field).containsKey(result))
+    }
 }
